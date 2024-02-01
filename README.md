@@ -26,3 +26,29 @@ and solve it as we did in the lectures. Give the final $\Theta$ complexity.
 
 Describe your reasoning and the conclusion you've come to. Your reasoning is the
 most important part. Add your answer to this markdown file.
+
+## Answer
+The recurrence relation for my algorithm is:
+
+$$\begin{equation}T(n)=\begin{cases}1, & \text{if $n<=1$} \\
+3T(\frac{n}{3}), & \text{if $n>1$}.\end{cases}\end{equation}$$
+
+The reasoning for this relation:\
+$T(1)=1$, same as mergesort, because it takes constant time to sum the array if it has a length of 0 or 1.
+It also takes constant time to split the array into thirds.
+Recursively summing the values takes $3T(\frac{n}{3})$ time because you are making 3 recursive calls, and each call handles a third of the array.
+
+Solving by substitution:
+
+$$\begin{aligned}T(n)& =3T(\frac{n}{3}) \\
+& =3(3T(\frac{(\frac{n}{3})}{3})) \\ 
+&=9T(\frac{n}{9}) \\
+&\cdots \\ 
+&=3^iT(\frac{n}{3^i})\end{aligned}$$
+
+For $i=\log(n)$:
+
+$$
+nT(\frac{n}{n})=nT(1)=n\in\Theta(n)
+$$
+
